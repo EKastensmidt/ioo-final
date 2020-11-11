@@ -1,0 +1,2 @@
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\obj\Debug\Game.csprojAssemblyReference.cache
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
