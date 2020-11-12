@@ -37,8 +37,22 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation.cs" />
+    <Compile Include="Arrow.cs" />
+    <Compile Include="Bullet.cs" />
+    <Compile Include="Button.cs" />
+    <Compile Include="Credits.cs" />
+    <Compile Include="Enemy.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="LevelController.cs" />
+    <Compile Include="LifeController.cs" />
+    <Compile Include="LoseScreen.cs" />
+    <Compile Include="MainMenu.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Vector2.cs" />
+    <Compile Include="WinScreen.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Engine.dll">
