@@ -25,7 +25,7 @@ namespace Game
         private static void Initialization()
         {
             startTime = DateTime.Now;
-            Engine.Initialize("Jueguito", 800, 800,true);
+            Engine.Initialize("Jueguito", 800, 800);
             GameManager.Instance.Initialization();
         }
 

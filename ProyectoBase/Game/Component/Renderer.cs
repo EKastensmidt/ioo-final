@@ -28,6 +28,7 @@ namespace Game
                 }
         } }
 
+
         public Renderer(int w, int h, string path, string state)
         {
             tileHeight = h;

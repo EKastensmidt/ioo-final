@@ -42,6 +42,7 @@
     <Compile Include="Button.cs" />
     <Compile Include="Component\Animation.cs" />
     <Compile Include="Component\Collider.cs" />
+    <Compile Include="Component\Entity.cs" />
     <Compile Include="Credits.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="Factory.cs" />

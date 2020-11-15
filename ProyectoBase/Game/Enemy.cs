@@ -76,13 +76,13 @@ namespace Game
 
         private bool IsBoxColliding(Bullet bullet)
         {
-            /*float distanceX = Math.Abs(position.X - bullet.Position.X);
+            float distanceX = Math.Abs(position.X - bullet.Position.X);
             float distanceY = Math.Abs(position.Y - bullet.Position.Y);
 
             float sumHalfWidth = width / 2 + bullet.Width / 2;
             float sumHalfHeight = height / 2 + bullet.Height / 2;
 
-            return distanceX <= sumHalfWidth && distanceY <= sumHalfHeight;*/
+            return distanceX <= sumHalfWidth && distanceY <= sumHalfHeight;
             return false;
         }
 

@@ -20,7 +20,7 @@ namespace Game
         {
             this.Renderer.Draw(this.Transform);
         }
-        public event OnUpdate() 
+        public void Update() 
         {
 
         }

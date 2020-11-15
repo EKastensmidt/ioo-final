@@ -36,6 +36,28 @@ namespace Game
             Player = new Player(new Vector2(0, 0), 1f, 0f, 300, 100);
         }
 
+        private List<Entity> entities;
+
+        public void UpdateFicticio()
+        {
+            foreach (Entity e in entities)
+            {
+                e.Update();
+            }
+            for (int i = 0; i < entities.Count -1; i++)
+            {
+                entities[i].CheckCollisions(entities.GetRange(i + 1, entities.Count - (i + 1)));
+            }
+        }
+
+        public void RenderFicticio()
+        {
+            foreach (Entity e in entities)
+            {
+                e.Render();
+            }
+        }
+
         public void Update()
         {
             Player.InputDetection();
