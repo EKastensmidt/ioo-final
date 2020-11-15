@@ -88,7 +88,6 @@ namespace Game
             }
 
             this.renderer.State = state;
-
             //isShootingKeyPressed = Engine.GetKey(Keys.SPACE);
         }
 

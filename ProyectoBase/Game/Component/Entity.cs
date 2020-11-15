@@ -36,8 +36,6 @@ namespace Game
                     //e.onCollision(this);
                 }
             }
-
-            Update += CheckCollisions
         }
     }
 }

@@ -34,7 +34,7 @@ namespace Game
         {
             if (isAlive)
             {
-                CheckCollisions(GameManager.Instance.LevelController.Bullets);
+                //CheckCollisions(GameManager.Instance.LevelController.Bullets);
                 EnemyMovement();
                 if (position.Y > 800)
                 {
@@ -52,16 +52,16 @@ namespace Game
             position += new Vector2(0, speed * Program.DeltaTime);
         }
 
-        private void CheckCollisions(List<Bullet> bullets)
-        {
-            for (int i = bullets.Count - 1; i >= 0; i--)
-            {
-                if (IsBoxColliding(bullets[i]))
-                {
-                    CollisionWithBullet(bullets[i]);
-                }
-            }
-        }
+        //private void CheckCollisions(List<Bullet> bullets)
+        //{
+        //    for (int i = bullets.Count - 1; i >= 0; i--)
+        //    {
+        //        if (IsBoxColliding(bullets[i]))
+        //        {
+        //            CollisionWithBullet(bullets[i]);
+        //        }
+        //    }
+        //}
 
         private void CollisionWithBullet(Bullet bullet)
         {
@@ -74,17 +74,17 @@ namespace Game
             }
         }
 
-        private bool IsBoxColliding(Bullet bullet)
-        {
-            float distanceX = Math.Abs(position.X - bullet.Position.X);
-            float distanceY = Math.Abs(position.Y - bullet.Position.Y);
+        //private bool IsBoxColliding(Bullet bullet)
+        //{
+        //    float distanceX = Math.Abs(position.X - bullet.Position.X);
+        //    float distanceY = Math.Abs(position.Y - bullet.Position.Y);
 
-            float sumHalfWidth = width / 2 + bullet.Width / 2;
-            float sumHalfHeight = height / 2 + bullet.Height / 2;
+        //    float sumHalfWidth = width / 2 + bullet.Width / 2;
+        //    float sumHalfHeight = height / 2 + bullet.Height / 2;
 
-            return distanceX <= sumHalfWidth && distanceY <= sumHalfHeight;
-            return false;
-        }
+        //    return distanceX <= sumHalfWidth && distanceY <= sumHalfHeight;
+        //    return false;
+        //}
 
         public void Render()
         {

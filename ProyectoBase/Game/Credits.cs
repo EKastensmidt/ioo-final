@@ -11,7 +11,6 @@ namespace Game
         public const string backgroundTexture = "Textures/Background.png";
         public const string creditsTexture = "Textures/Screens/Credits.png";
         public const string escapeTexture = "Textures/Escape.png";
-        #endregion
 
         public void Update()
         {
