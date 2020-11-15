@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Game
 {
@@ -24,10 +25,10 @@ namespace Game
         private static void Initialization()
         {
             startTime = DateTime.Now;
-            Engine.Initialize("Jueguito", 800, 800);
-
+            Engine.Initialize("Jueguito", 800, 800,true);
             GameManager.Instance.Initialization();
         }
+
         private static void Update()
         {
             GameManager.Instance.Update();

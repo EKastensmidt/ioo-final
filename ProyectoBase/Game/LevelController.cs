@@ -21,22 +21,19 @@ namespace Game
         public Player Player { get; private set; }
         public List<Bullet> Bullets { get; private set; } = new List<Bullet>();
         public List<Enemy> Enemies { get; set; } = new List<Enemy>();
-
-        public float width => currentAnimation.CurrentFrame.Width;
-        public float height => currentAnimation.CurrentFrame.Height;
         #endregion
 
         public LevelController()
         {
             Initialization();
-            PlayBackgroundAnimation();
-            currentAnimation = backgroundAnimation;
+            //PlayBackgroundAnimation();
+            //currentAnimation = backgroundAnimation;
 
         }
 
         public void Initialization()
         {
-            Player = new Player(new Vector2(400, 750), 1f, 0f, 300, 100);
+            Player = new Player(new Vector2(0, 0), 1f, 0f, 300, 100);
         }
 
         public void Update()
@@ -51,7 +48,7 @@ namespace Game
             {
                 Bullets[i].Update();
             }
-            EnemySpawner();
+            //EnemySpawner();
             for (int i = Enemies.Count - 1; i >= 0; i--)
             {
                 Enemies[i].Update();
@@ -60,13 +57,10 @@ namespace Game
             {
                 //GameManager.Instance.OnWinHandler();
             }
-
-            currentAnimation.Update();
         }
 
         public void Render()
         {
-            Engine.Draw(currentAnimation.CurrentFrame);
 
             if (Player != null)
             {
@@ -97,20 +91,6 @@ namespace Game
                 Engine.Debug(ind);
                 ind++;
             }
-        }
-
-        public void PlayBackgroundAnimation()
-        {
-            // Idle textures
-            List<Texture> backgroundTexture = new List<Texture>();
-
-            for (int i = 0; i < 52; i++)
-            {
-                Texture frame = Engine.GetTexture($"Textures/Background/{i}.png");
-                backgroundTexture.Add(frame);
-            }
-
-            backgroundAnimation = new Animation(backgroundTexture, 0.04f, true, "Idle");
         }
     }
 }

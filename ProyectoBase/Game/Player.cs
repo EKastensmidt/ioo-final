@@ -11,91 +11,91 @@ namespace Game
     public class Player
     {
         #region • Private fields/variables (11)
-        private float angle;
-        private float scale;
         private float speed;
-        private bool isMoveRightKeyPressed;
-        private bool isMoveLeftKeyPressed;
+        private int verticalMovement;
+        private int horizontalMovement;
         private bool isShootingKeyPressed;
         private float currentShootingCooldown;
         private float shootingCooldown = 0.5f;
-        private LifeController lifeController;
-        private Animation idleAnimation;
-        private Animation currentAnimation;
+        //private LifeController lifeController;
         #endregion
-        public float width => currentAnimation.CurrentFrame.Width;
-        public float height => currentAnimation.CurrentFrame.Height;
+
+        private Renderer renderer;
+        private Transform transform;
+
         public Vector2 Position { get; set; } = Vector2.Zero;
 
         public Player(Vector2 position, float scale, float angle, float speed, int maxLife)
         {
             Position = position;
-            this.lifeController = new LifeController(maxLife);
-            this.scale = scale;
-            this.angle = angle;
+            //this.lifeController = new LifeController(maxLife);
             this.speed = speed;
 
-            CreateAnimations();
-            currentAnimation = idleAnimation;
+            this.transform = new Transform(position, angle, new Vector2(scale, scale));
+
+            this.renderer = new Renderer(64, 64, "Textures/Test", "DOWN");
+            this.renderer.addAnimation("DOWN", new Animation(true, 100, 4, 0));
+            this.renderer.addAnimation("LEFT", new Animation(true, 100, 4, 1));
+            this.renderer.addAnimation("RIGHT", new Animation(true, 100, 4, 2));
+            this.renderer.addAnimation("UP", new Animation(true, 100, 4, 3));
         }
 
         public void Update()
         {
             currentShootingCooldown -= Program.DeltaTime;
-            if (isMoveRightKeyPressed)
+            float multiplier = 1;
+            if(horizontalMovement != 0 && verticalMovement != 0)
             {
-                Position = new Vector2(Position.X + speed * Program.DeltaTime, Position.Y);
+                multiplier = 0.70710678118f;
             }
-            else if (isMoveLeftKeyPressed)
-            {
-                Position = new Vector2(Position.X - speed * Program.DeltaTime, Position.Y);
-            }
+            this.transform.Position.X += horizontalMovement * multiplier * speed * Program.DeltaTime;
+            this.transform.Position.Y += verticalMovement * multiplier * speed * Program.DeltaTime;
+
             if (isShootingKeyPressed && currentShootingCooldown <= 0)
             {
                 ShootBullet();
                 PlayShootSound();
             }
-            currentAnimation.Update();
         }
 
         public void Render()
         {
-            Engine.Draw(currentAnimation.CurrentFrame, Position.X, Position.Y, scale, scale, angle, GetOffsetX(), GetOffsetY());
+            this.renderer.Draw(this.transform);
         }
 
         public void InputDetection()
         {
-            isMoveLeftKeyPressed = Engine.GetKey(Keys.A);
-            isMoveRightKeyPressed = Engine.GetKey(Keys.D);
-            isShootingKeyPressed = Engine.GetKey(Keys.SPACE);
+            verticalMovement = 0;
+            horizontalMovement = 0;
+            string state = "DOWN";
+            if (Engine.GetKey(Keys.A))
+            {
+                horizontalMovement += -1;
+                state = "LEFT";
+            }
+            if (Engine.GetKey(Keys.D))
+            {
+                horizontalMovement += 1;
+                state = "RIGHT";
+            }
+            if (Engine.GetKey(Keys.W)) { 
+                verticalMovement += -1;
+                state = "UP";
+            }
+            if (Engine.GetKey(Keys.S)) { 
+                verticalMovement += 1;
+                state = "DOWN";
+            }
+
+            this.renderer.State = state;
+
+            //isShootingKeyPressed = Engine.GetKey(Keys.SPACE);
         }
 
         private void ShootBullet()
         {
             currentShootingCooldown = shootingCooldown;
             Bullet bullet = new Bullet(Position, 0.75f, 0f, 500f, 50);
-        }
-
-        private float GetOffsetX()
-        {
-            return (currentAnimation.CurrentFrame.Width * scale) / 2f;
-        }
-
-        private float GetOffsetY()
-        {
-            return (currentAnimation.CurrentFrame.Height * scale) / 2f;
-        }
-
-        private void CreateAnimations()
-        {
-            List<Texture> idleTextures = new List<Texture>();
-            for (int i = 0; i < 3; i++)
-            {
-                Texture frame = Engine.GetTexture($"Textures/Player/Idle/{i}.png");
-                idleTextures.Add(frame);
-            }
-
-            idleAnimation = new Animation(idleTextures, 0.1f, true, "Idle");
         }
 
         private static void PlayShootSound()
