@@ -10,16 +10,17 @@ namespace Game
 {
     public class Player : Entity
     {
+        private static float fuel = 100;
         private float speed;
         private int verticalMovement;
         private int horizontalMovement;
 
+        public static float Fuel { get => fuel; set => fuel = value; }
 
         public Player(Vector2 position, float scale, float angle, float speed) : 
             base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(64, 64, "Textures/Test", "DOWN"), new Collider())
         {
             this.speed = speed;
-
             Renderer.addAnimation("DOWN", new Animation(true, 100, 4, 0));
             Renderer.addAnimation("LEFT", new Animation(true, 100, 4, 1));
             Renderer.addAnimation("RIGHT", new Animation(true, 100, 4, 2));
@@ -36,14 +37,15 @@ namespace Game
             }
             Transform.Position.X += horizontalMovement * multiplier * speed * Program.DeltaTime;
             Transform.Position.Y += verticalMovement * multiplier * speed * Program.DeltaTime;
+            Engine.Debug("FUEL:" + fuel);
+            FuelLoss();
         }
 
         public override void onCollision(Entity e)
         {
             if(e is IEnemy)
             {
-                Engine.Debug("muertoooo"+Program.DeltaTime);
-                //GameManager.Instance.ChangeGameState(GameState.LoseScreen);
+                GameManager.Instance.ChangeGameState(GameState.LoseScreen);
             }
             if (e is ICollectable)
             {
@@ -51,7 +53,7 @@ namespace Game
             }
             if (e is IConsumable)
             {
-                Engine.Debug("fuel");
+                ((IConsumable)e).Use();
             }
         }
 
@@ -79,7 +81,15 @@ namespace Game
                 state = "DOWN";
             }
 
-            Renderer.State = state;
+            Renderer.State = state;   
+        }
+        public void FuelLoss()
+        {
+            if (Fuel < 0)
+            {
+                GameManager.Instance.ChangeGameState(GameState.LoseScreen);
+            }
+            Fuel -= Program.DeltaTime / 0.5f;
         }
     }
 }

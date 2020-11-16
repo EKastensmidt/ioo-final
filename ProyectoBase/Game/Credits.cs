@@ -8,8 +8,8 @@ namespace Game
 {
     public class Credits
     {
-        public const string backgroundTexture = "Textures/Background.png";
-        public const string creditsTexture = "Textures/Screens/Credits.png";
+        public const string backgroundTexture = "Textures/Background/STREET0";
+        public const string creditsTexture = "Textures/Scenes/Credits/Credits.png";
         public const string escapeTexture = "Textures/Escape.png";
 
         public void Update()

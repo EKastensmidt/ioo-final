@@ -20,7 +20,7 @@ namespace Game
 
         public void Render()
         {
-            Engine.Draw("Textures/Buttons/ArrowIndicator.png", posX, posY, 1f, 1f, 0, 0, 0);
+            Engine.Draw("Textures/Scenes/Menu/ArrowIndicator.png", posX, posY, 1f, 1f, 0, 0, 0);
         }
     }
 }

@@ -27,3 +27,14 @@ C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\T
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Coin\COIN2
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Coin\COIN3
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\FastCar\FAST0
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Fuel\FUEL0
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Truck\TRUCK0
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Background\STREET0
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\Credits\Credits.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\LoseScreen\gameOver.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\Menu\ArrowIndicator.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\Menu\credits.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\Menu\quit.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\Menu\start.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Scenes\WinScreen\youWin.png
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Escape.png

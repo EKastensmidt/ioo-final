@@ -45,7 +45,7 @@
     <Compile Include="Component\Entity.cs" />
     <Compile Include="Credits.cs" />
     <Compile Include="Factory.cs" />
-    <Compile Include="FastCar.cs" />
+    <Compile Include="Enemies\FastCar.cs" />
     <Compile Include="Fuel.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameManager.cs" />
@@ -55,13 +55,13 @@
     <Compile Include="LevelController.cs" />
     <Compile Include="LoseScreen.cs" />
     <Compile Include="MainMenu.cs" />
-    <Compile Include="NormalCar.cs" />
+    <Compile Include="Enemies\NormalCar.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Component\Renderer.cs" />
     <Compile Include="Component\Transform.cs" />
-    <Compile Include="Truck.cs" />
+    <Compile Include="Enemies\Truck.cs" />
     <Compile Include="Vector2.cs" />
     <Compile Include="WinScreen.cs" />
   </ItemGroup>
@@ -69,6 +69,39 @@
     <Content Include="Engine.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Textures\Escape.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\Credits\Credits.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\LoseScreen\gameOver.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\Menu\ArrowIndicator.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\Menu\credits.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\Menu\quit.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\Menu\start.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Textures\Scenes\WinScreen\youWin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Textures\Background\STREET0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Fuel\FUEL0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Truck\TRUCK0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Textures\Coin\COIN0">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -138,12 +171,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
-    <Folder Include="Textures\Fuel\" />
-    <Folder Include="Textures\Scenes\Credits\" />
-    <Folder Include="Textures\Scenes\LoseScreen\" />
-    <Folder Include="Textures\Scenes\Menu\" />
-    <Folder Include="Textures\Scenes\WinScreen\" />
-    <Folder Include="Textures\Truck\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

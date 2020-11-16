@@ -53,6 +53,7 @@ namespace Game
 
         public void Render()
         {
+            Engine.Draw("Textures/Background/STREET0");
             Player.Render();
             enemies.Render();
             coins.Render();
@@ -112,7 +113,7 @@ namespace Game
                 Entity fuel = coins.Get();
                 if (fuel == null)
                 {
-                    fuel = new Fuel(new Vector2(x, y), 100, 0, 1);
+                    fuel = new Fuel(new Vector2(x, y), 100, 0, 1, 100);
                     coins.Add(fuel);
                 }
                 fuel.Transform.Position = new Vector2(x, y);

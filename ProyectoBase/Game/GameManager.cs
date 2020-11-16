@@ -44,9 +44,7 @@ namespace Game
             WinScreen = new WinScreen();
             MainMenu = new MainMenu();
             Credits = new Credits();
-            ChangeGameState(GameState.Level);
-            //WinScreen.OnWin += OnWinHandler;
-            //LoseScreen.OnLose += OnLoseHandler;
+            ChangeGameState(GameState.MainMenu);
         }
 
         public void Update()
@@ -99,13 +97,5 @@ namespace Game
         {
             CurrentState = gameState;
         }
-        //public void OnWinHandler()
-        //{
-        //    GameManager.Instance.ChangeGameState(GameState.WinScreen);
-        //}
-        //public void OnLoseHandler()
-        //{
-        //    GameManager.Instance.ChangeGameState(GameState.LoseScreen);
-        //}
     }
 }

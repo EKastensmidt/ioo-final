@@ -8,22 +8,18 @@ namespace Game
 {
     public class MainMenu
     {
-        #region • Private classes (6)
         private Arrow arrow;
         private Button startGameButton;
         private Button creditsButton;
         private Button quitButton;
         private Button currentButton;
         private List<Button> buttons = new List<Button>();
-        #endregion
 
-        #region • String references (5)
-        public const string backgroundTexture = "Textures/Background.png";
-        public const string titleTexture = "Textures/Title.png";
-        public const string startButtonTexture = "Textures/Buttons/start.png";
-        public const string creditsButtonTexture = "Textures/Buttons/credits.png";
-        public const string quitButtonTexture = "Textures/Buttons/quit.png";
-        #endregion
+        public const string backgroundTexture = "Textures/Background/STREET0";
+        //public const string titleTexture = "Textures/Title.png";
+        public const string startButtonTexture = "Textures/Scenes/Menu/start.png";
+        public const string creditsButtonTexture = "Textures/Scenes/Menu/credits.png";
+        public const string quitButtonTexture = "Textures/Scenes/Menu/quit.png";
 
         public MainMenu()
         {
@@ -61,7 +57,7 @@ namespace Game
         public void Render()
         {
             Engine.Draw(backgroundTexture);
-            Engine.Draw(titleTexture, 75, 50, 1f, 1f);
+            //Engine.Draw(titleTexture, 75, 50, 1f, 1f);
 
             foreach (var button in buttons)
             {

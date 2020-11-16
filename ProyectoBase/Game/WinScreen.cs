@@ -8,7 +8,7 @@ namespace Game
 {
     public class WinScreen
     {
-        public const string backgroundTexture = "Textures/Background.png";
+        public const string backgroundTexture = "Textures/Background/STREET0";
         public const string winTexture = "Textures/Screens/youWin.png";
         public const string escapeTexture = "Textures/Escape.png";
 

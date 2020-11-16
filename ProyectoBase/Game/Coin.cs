@@ -9,6 +9,7 @@ namespace Game
     public class Coin : Entity, ICollectable
     {
         public float Speed { get; set; }
+        public static int coin { get; set; }
 
         public Coin(Vector2 position, float speed, float angle, float scale) :
             base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(32, 32, "Textures/Coin", "COIN"), new Collider())
@@ -28,7 +29,8 @@ namespace Game
         }
         public void PickUp()
         {
-            Engine.Debug("Pickup");
+            coin++;
+            Engine.Debug("coin:"+coin);
             Destroy();
         }
         public override void onCollision(Entity e)
