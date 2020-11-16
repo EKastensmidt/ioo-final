@@ -6,12 +6,23 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public enum EnemyTypes
-    {
-        NormalCar, FastCar, Truck
-    }
     public class Factory
     {
-     
+        public static Entity Spawn()
+        {
+            Random _random = new Random();
+            float num = _random.Next(1,4);
+            switch (num)
+            {
+                case 1:
+                    return new NormalCar(Vector2.Zero, 200, 0, 1);
+                case 2:
+                    return new FastCar(Vector2.Zero, 500, 0, 1);
+                default:
+                    return new Truck(Vector2.Zero, 75, 0, 1);
+            }
+                
+        }
+
     }
 }

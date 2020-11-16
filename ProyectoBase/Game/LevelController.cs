@@ -8,20 +8,17 @@ namespace Game
 {
     public class LevelController
     {
-        #region • Private fields and variables (5)
-        private Animation backgroundAnimation;
-        private Animation currentAnimation;
         private static float elapsedTime = 0.0f;
         private static float enemySpawnRate = 1.5f;
-        private static int ind = 0;
-        private int enemyCounter = 29;
-        #endregion
+        private static float coinSpawnRate = 6f;
+        private static float coinElapsedTime = 0.0f;
+        private static float fuelSpawnRate = 11f;
+        private static float fuelElapsedTime = 0.0f;
+        private Pool enemies;
+        private Pool coins;
+        private Pool fuel;
 
-        #region • Public fields and variables (3)
         public Player Player { get; private set; }
-        public List<Bullet> Bullets { get; private set; } = new List<Bullet>();
-        public List<Enemy> Enemies { get; set; } = new List<Enemy>();
-        #endregion
 
         public LevelController()
         {
@@ -33,69 +30,33 @@ namespace Game
 
         public void Initialization()
         {
-            Player = new Player(new Vector2(0, 0), 1f, 0f, 300, 100);
-        }
-
-        private List<Entity> entities;
-
-        public void UpdateFicticio()
-        {
-            foreach (Entity e in entities)
-            {
-                e.Update();
-            }
-            for (int i = 0; i < entities.Count -1; i++)
-            {
-                entities[i].CheckCollisions(entities.GetRange(i + 1, entities.Count - (i + 1)));
-            }
-        }
-
-        public void RenderFicticio()
-        {
-            foreach (Entity e in entities)
-            {
-                e.Render();
-            }
+            Player = new Player(new Vector2(0, 0), 1f, 0f, 300);
+            enemies = new Pool();
+            coins = new Pool();
+            fuel = new Pool();
         }
 
         public void Update()
         {
-            Player.InputDetection();
+            Player.Update();
+            enemies.Update();
+            coins.Update();
+            fuel.Update();
+            Player.CheckCollisions(enemies.Used);
+            Player.CheckCollisions(coins.Used);
+            Player.CheckCollisions(fuel.Used);
 
-            if (Player != null)
-            {
-                Player.Update();
-            }
-            for (int i = Bullets.Count - 1; i >= 0; i--)
-            {
-                Bullets[i].Update();
-            }
-            //EnemySpawner();
-            for (int i = Enemies.Count - 1; i >= 0; i--)
-            {
-                Enemies[i].Update();
-            }
-            if (ind == enemyCounter)
-            {
-                //GameManager.Instance.OnWinHandler();
-            }
+            CoinSpawner();
+            FuelSpawner();
+            EnemySpawner();
         }
 
         public void Render()
         {
-
-            if (Player != null)
-            {
-                Player.Render();
-            }
-            for (int i = Bullets.Count - 1; i >= 0; i--)
-            {
-                Bullets[i].Render();
-            }
-            for (int i = Enemies.Count - 1; i >= 0; i--)
-            {
-                Enemies[i].Render();
-            }
+            Player.Render();
+            enemies.Render();
+            coins.Render();
+            fuel.Render();
         }
 
         private void EnemySpawner()
@@ -105,13 +66,56 @@ namespace Game
             float x = num;
             float y = -200;
             elapsedTime += Program.DeltaTime;
-            if (ind < 30 && elapsedTime > enemySpawnRate)
+            if (elapsedTime > enemySpawnRate)
             {
                 elapsedTime = 0;
-                Enemy enemy = new Enemy(new Vector2(x, y), 1f, 0f, 175f, 100);
-                Enemies.Add(enemy);
-                Engine.Debug(ind);
-                ind++;
+                Entity enemy = enemies.Get();
+                if(enemy == null)
+                {
+                    enemy = Factory.Spawn();
+                    Engine.Debug("New Car");
+                    enemies.Add(enemy);
+                } 
+                enemy.Transform.Position = new Vector2(x, y);
+            }
+        }
+
+        private void CoinSpawner()
+        {
+            Random _random = new Random();
+            float num = _random.Next(25, 775);
+            float x = num;
+            float y = -200;
+            coinElapsedTime += Program.DeltaTime;
+            if (coinElapsedTime > coinSpawnRate)
+            {
+                coinElapsedTime = 0;
+                Entity coin = coins.Get();
+                if (coin == null)
+                {
+                    coin = new Coin(new Vector2(x, y), 100, 0, 1);
+                    coins.Add(coin);
+                }
+                coin.Transform.Position = new Vector2(x, y);
+            }
+        }
+        private void FuelSpawner()
+        {
+            Random _random = new Random();
+            float num = _random.Next(25, 775);
+            float x = num;
+            float y = -200;
+            fuelElapsedTime += Program.DeltaTime;
+            if (fuelElapsedTime > fuelSpawnRate)
+            {
+                fuelElapsedTime = 0;
+                Entity fuel = coins.Get();
+                if (fuel == null)
+                {
+                    fuel = new Fuel(new Vector2(x, y), 100, 0, 1);
+                    coins.Add(fuel);
+                }
+                fuel.Transform.Position = new Vector2(x, y);
             }
         }
     }

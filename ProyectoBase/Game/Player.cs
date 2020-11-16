@@ -8,59 +8,51 @@ using System.Media;
 
 namespace Game
 {
-    public class Player
+    public class Player : Entity
     {
-        #region • Private fields/variables (11)
         private float speed;
         private int verticalMovement;
         private int horizontalMovement;
-        private bool isShootingKeyPressed;
-        private float currentShootingCooldown;
-        private float shootingCooldown = 0.5f;
-        //private LifeController lifeController;
-        #endregion
 
-        private Renderer renderer;
-        private Transform transform;
 
-        public Vector2 Position { get; set; } = Vector2.Zero;
-
-        public Player(Vector2 position, float scale, float angle, float speed, int maxLife)
+        public Player(Vector2 position, float scale, float angle, float speed) : 
+            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(64, 64, "Textures/Test", "DOWN"), new Collider())
         {
-            Position = position;
-            //this.lifeController = new LifeController(maxLife);
             this.speed = speed;
 
-            this.transform = new Transform(position, angle, new Vector2(scale, scale));
-
-            this.renderer = new Renderer(64, 64, "Textures/Test", "DOWN");
-            this.renderer.addAnimation("DOWN", new Animation(true, 100, 4, 0));
-            this.renderer.addAnimation("LEFT", new Animation(true, 100, 4, 1));
-            this.renderer.addAnimation("RIGHT", new Animation(true, 100, 4, 2));
-            this.renderer.addAnimation("UP", new Animation(true, 100, 4, 3));
+            Renderer.addAnimation("DOWN", new Animation(true, 100, 4, 0));
+            Renderer.addAnimation("LEFT", new Animation(true, 100, 4, 1));
+            Renderer.addAnimation("RIGHT", new Animation(true, 100, 4, 2));
+            Renderer.addAnimation("UP", new Animation(true, 100, 4, 3));
         }
 
-        public void Update()
+        public override void Update()
         {
-            currentShootingCooldown -= Program.DeltaTime;
+            InputDetection();
             float multiplier = 1;
             if(horizontalMovement != 0 && verticalMovement != 0)
             {
                 multiplier = 0.70710678118f;
             }
-            this.transform.Position.X += horizontalMovement * multiplier * speed * Program.DeltaTime;
-            this.transform.Position.Y += verticalMovement * multiplier * speed * Program.DeltaTime;
-
-            if (isShootingKeyPressed && currentShootingCooldown <= 0)
-            {
-                ShootBullet();
-                PlayShootSound();
-            }
+            Transform.Position.X += horizontalMovement * multiplier * speed * Program.DeltaTime;
+            Transform.Position.Y += verticalMovement * multiplier * speed * Program.DeltaTime;
         }
 
-        public void Render()
+        public override void onCollision(Entity e)
         {
-            this.renderer.Draw(this.transform);
+            if(e is IEnemy)
+            {
+                Engine.Debug("muertoooo"+Program.DeltaTime);
+                //GameManager.Instance.ChangeGameState(GameState.LoseScreen);
+            }
+            if (e is ICollectable)
+            {
+                ((ICollectable)e).PickUp();
+            }
+            if (e is IConsumable)
+            {
+                Engine.Debug("fuel");
+            }
         }
 
         public void InputDetection()
@@ -87,20 +79,7 @@ namespace Game
                 state = "DOWN";
             }
 
-            this.renderer.State = state;
-            //isShootingKeyPressed = Engine.GetKey(Keys.SPACE);
-        }
-
-        private void ShootBullet()
-        {
-            currentShootingCooldown = shootingCooldown;
-            Bullet bullet = new Bullet(Position, 0.75f, 0f, 500f, 50);
-        }
-
-        private static void PlayShootSound()
-        {
-            SoundPlayer shootSound = new SoundPlayer("Audio/ShootSound.wav");
-            shootSound.Play();
+            Renderer.State = state;
         }
     }
 }

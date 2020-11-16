@@ -60,7 +60,7 @@ namespace Game
                 Engine.Draw(Engine.GetTexture($"{TexturePath}/{State}{frame}"), transform.Position.X, transform.Position.Y, transform.Scale.X, transform.Scale.Y, transform.Rotation, tileWidth/2, tileHeight/2);
             } else
             {
-                Engine.Draw(Engine.GetTexture($"{TexturePath}/{State}{0}"), transform.Position.X, transform.Position.Y, transform.Scale.X, transform.Scale.Y, transform.Rotation, 0, 0);
+                Engine.Draw(Engine.GetTexture($"{TexturePath}/{State}{0}"), transform.Position.X, transform.Position.Y, transform.Scale.X, transform.Scale.Y, transform.Rotation, tileWidth / 2, tileHeight / 2);
             }
             
             

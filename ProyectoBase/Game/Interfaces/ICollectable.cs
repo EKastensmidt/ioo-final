@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public interface IEnemy
+    public interface ICollectable
     {
-        float Speed { get; set; }
+        void PickUp();
         void Update();
-        void Render();
-        void EnemyMovement();
     }
 }

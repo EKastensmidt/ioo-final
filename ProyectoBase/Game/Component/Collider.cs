@@ -8,6 +8,10 @@ namespace Game
 {
     public class Collider
     {
+        public Collider()
+        {
+
+        }
         private bool IsBetween(float value, float a, float b)
         {
             return (value > a && value < b) || (value < a && value > b);

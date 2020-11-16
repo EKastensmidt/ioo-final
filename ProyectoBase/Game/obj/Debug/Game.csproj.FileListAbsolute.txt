@@ -1,7 +1,6 @@
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\obj\Debug\Game.csprojAssemblyReference.cache
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\obj\Debug\Game.csproj.CoreCompileInputs.cache
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Engine.dll
-C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\ship.png
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Game.exe
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Game.pdb
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\obj\Debug\Game.exe
@@ -22,3 +21,9 @@ C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\T
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Test\UP1
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Test\UP2
 C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Test\UP3
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\NormalCar\BASIC0
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Coin\COIN0
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Coin\COIN1
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Coin\COIN2
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\Coin\COIN3
+C:\Users\Ezequ\OneDrive\Escritorio\IOO TP2\ioo-tp2\ProyectoBase\Game\bin\Debug\Textures\FastCar\FAST0

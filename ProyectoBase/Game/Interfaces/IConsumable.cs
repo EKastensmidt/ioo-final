@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public interface IEnemy
+    public interface IConsumable
     {
-        float Speed { get; set; }
+        void Use();
         void Update();
-        void Render();
-        void EnemyMovement();
     }
 }

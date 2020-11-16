@@ -38,24 +38,30 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arrow.cs" />
-    <Compile Include="Bullet.cs" />
     <Compile Include="Button.cs" />
+    <Compile Include="Coin.cs" />
     <Compile Include="Component\Animation.cs" />
     <Compile Include="Component\Collider.cs" />
     <Compile Include="Component\Entity.cs" />
     <Compile Include="Credits.cs" />
-    <Compile Include="Enemy.cs" />
     <Compile Include="Factory.cs" />
+    <Compile Include="FastCar.cs" />
+    <Compile Include="Fuel.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="Interfaces\ICollectable.cs" />
+    <Compile Include="Interfaces\IConsumable.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
     <Compile Include="LevelController.cs" />
     <Compile Include="LoseScreen.cs" />
     <Compile Include="MainMenu.cs" />
+    <Compile Include="NormalCar.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Pool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Component\Renderer.cs" />
     <Compile Include="Component\Transform.cs" />
+    <Compile Include="Truck.cs" />
     <Compile Include="Vector2.cs" />
     <Compile Include="WinScreen.cs" />
   </ItemGroup>
@@ -63,9 +69,24 @@
     <Content Include="Engine.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ship.png">
+    <None Include="Textures\Coin\COIN0">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
+    <None Include="Textures\Coin\COIN1">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Coin\COIN2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Coin\COIN3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\FastCar\FAST0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\NormalCar\BASIC0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Textures\Test\DOWN0">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -117,6 +138,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Textures\Fuel\" />
+    <Folder Include="Textures\Scenes\Credits\" />
+    <Folder Include="Textures\Scenes\LoseScreen\" />
+    <Folder Include="Textures\Scenes\Menu\" />
+    <Folder Include="Textures\Scenes\WinScreen\" />
+    <Folder Include="Textures\Truck\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
