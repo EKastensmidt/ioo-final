@@ -9,23 +9,22 @@ namespace Game
     public class Pool
     {
         private List<Entity> used;
-        private List<Entity> unused;
+        private Queue<Entity> unused;
 
         public List<Entity> Used { get => used; }
 
         public Pool()
         {
             used = new List<Entity>();
-            unused = new List<Entity>();
+            unused = new Queue<Entity>();
         }
         public Entity Get()
         {
             if (unused.Count > 0)
             {
-                Entity el = unused.First();
+                Entity el = unused.Dequeue();
                 el.OnDestroyInstance += OnDestroyHandle;
                 Used.Add(el);
-                unused.Remove(el);
                 return el;
             }
             return null;
@@ -57,7 +56,7 @@ namespace Game
         public void OnDestroyHandle(Entity t)
         {
             t.OnDestroyInstance -= OnDestroyHandle;
-            unused.Add(t);
+            unused.Enqueue(t);
             used.Remove(t);
         }
     }

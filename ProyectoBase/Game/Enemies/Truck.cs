@@ -11,7 +11,7 @@ namespace Game
         public float Speed { get; set; }
 
         public Truck(Vector2 position, float speed, float angle, float scale) :
-            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(40, 100, "Textures/Truck", "TRUCK"), new Collider())
+            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(50, 125, "Textures/Truck", "TRUCK"), new Collider())
         {
             this.Speed = speed;
         }

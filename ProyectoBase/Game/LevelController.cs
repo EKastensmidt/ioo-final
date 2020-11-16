@@ -9,14 +9,14 @@ namespace Game
     public class LevelController
     {
         private static float elapsedTime = 0.0f;
-        private static float enemySpawnRate = 1.5f;
+        private static float enemySpawnRate = 0.5f;
         private static float coinSpawnRate = 6f;
         private static float coinElapsedTime = 0.0f;
         private static float fuelSpawnRate = 11f;
         private static float fuelElapsedTime = 0.0f;
         private Pool enemies;
         private Pool coins;
-        private Pool fuel;
+        private Pool fuels;
 
         public Player Player { get; private set; }
 
@@ -30,10 +30,10 @@ namespace Game
 
         public void Initialization()
         {
-            Player = new Player(new Vector2(0, 0), 1f, 0f, 300);
+            Player = new Player(new Vector2(400, 700), 1f, 0f, 300);
             enemies = new Pool();
             coins = new Pool();
-            fuel = new Pool();
+            fuels = new Pool();
         }
 
         public void Update()
@@ -41,10 +41,10 @@ namespace Game
             Player.Update();
             enemies.Update();
             coins.Update();
-            fuel.Update();
+            fuels.Update();
             Player.CheckCollisions(enemies.Used);
             Player.CheckCollisions(coins.Used);
-            Player.CheckCollisions(fuel.Used);
+            Player.CheckCollisions(fuels.Used);
 
             CoinSpawner();
             FuelSpawner();
@@ -57,7 +57,7 @@ namespace Game
             Player.Render();
             enemies.Render();
             coins.Render();
-            fuel.Render();
+            fuels.Render();
         }
 
         private void EnemySpawner()
@@ -110,11 +110,11 @@ namespace Game
             if (fuelElapsedTime > fuelSpawnRate)
             {
                 fuelElapsedTime = 0;
-                Entity fuel = coins.Get();
+                Entity fuel = fuels.Get();
                 if (fuel == null)
                 {
                     fuel = new Fuel(new Vector2(x, y), 100, 0, 1, 100);
-                    coins.Add(fuel);
+                    fuels.Add(fuel);
                 }
                 fuel.Transform.Position = new Vector2(x, y);
             }
