@@ -6,30 +6,30 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public class Pool
+    public class Pool<T> where T : Entity
     {
-        private List<Entity> used;
-        private Queue<Entity> unused;
+        private List<T> used;
+        private Queue<T> unused;
 
-        public List<Entity> Used { get => used; }
+        public List<T> Used { get => used; }
 
         public Pool()
         {
-            used = new List<Entity>();
-            unused = new Queue<Entity>();
+            used = new List<T>();
+            unused = new Queue<T>();
         }
-        public Entity Get()
+        public T Get()
         {
             if (unused.Count > 0)
             {
-                Entity el = unused.Dequeue();
+                T el = unused.Dequeue();
                 el.OnDestroyInstance += OnDestroyHandle;
                 Used.Add(el);
                 return el;
             }
             return null;
         }
-        public void Add(Entity t)
+        public void Add(T t)
         {
             Used.Add(t);
             t.OnDestroyInstance += OnDestroyHandle;
@@ -37,7 +37,7 @@ namespace Game
 
         public void Render()
         {
-            foreach (Entity e in used)
+            foreach (T e in used)
             {
                 e.Render();
             }
@@ -45,15 +45,15 @@ namespace Game
 
         public void Update()
         {
-            Entity[] temp = new Entity[used.Count];
+            T[] temp = new T[used.Count];
             used.CopyTo(temp);
-            foreach (Entity e in temp)
+            foreach (T e in temp)
             {
                 e.Update();
             }
         }
 
-        public void OnDestroyHandle(Entity t)
+        public void OnDestroyHandle<T>(T t) where T : Entity
         {
             t.OnDestroyInstance -= OnDestroyHandle;
             unused.Enqueue(t);
