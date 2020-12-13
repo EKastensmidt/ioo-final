@@ -14,9 +14,9 @@ namespace Game
         private static float coinElapsedTime = 0.0f;
         private static float fuelSpawnRate = 11f;
         private static float fuelElapsedTime = 0.0f;
-        private Pool enemies;
-        private Pool coins;
-        private Pool fuels;
+        private Pool<Entity> enemies;
+        private Pool<Entity> coins;
+        private Pool<Entity> fuels;
 
         public Player Player { get; private set; }
 
@@ -31,9 +31,9 @@ namespace Game
         public void Initialization()
         {
             Player = new Player(new Vector2(400, 700), 1f, 0f, 300);
-            enemies = new Pool();
-            coins = new Pool();
-            fuels = new Pool();
+            enemies = new Pool<Entity>();
+            coins = new Pool<Entity>();
+            fuels = new Pool<Entity>();
         }
 
         public void Update()

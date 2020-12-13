@@ -53,11 +53,11 @@ namespace Game
             }
         }
 
-        public void OnDestroyHandle<T>(T t) where T : Entity
+        public void OnDestroyHandle(Entity t)
         {
             t.OnDestroyInstance -= OnDestroyHandle;
-            unused.Enqueue(t);
-            used.Remove(t);
+            unused.Enqueue((T)t);
+            used.Remove((T)t);
         }
     }
 }

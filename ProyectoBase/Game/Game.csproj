@@ -49,6 +49,7 @@
     <Compile Include="Fuel.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameManager.cs" />
+    <Compile Include="Interfaces\IImplemetation.cs" />
     <Compile Include="Interfaces\ICollectable.cs" />
     <Compile Include="Interfaces\IConsumable.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />

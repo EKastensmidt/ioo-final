@@ -57,5 +57,16 @@ namespace Game
             float opposite = b.Y - a.Y;
             return (float)Math.Sqrt(Math.Pow(adjacent, 2) + Math.Pow(opposite, 2));
         }
+
+        public void CheckCollisions(Entity[] entities, Entity entitiy)
+        {
+            foreach (Entity e in entities)
+            {
+                if (this.IsColliding(entitiy, e))
+                {
+                    entitiy.onCollision(e);
+                }
+            }
+        }
     }
 }

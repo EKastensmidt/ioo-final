@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 namespace Game
 {
 
-    public abstract class Entity
+    public abstract class Entity 
     {
-        public delegate void OnDestroy(Entity me);
-        public event OnDestroy OnDestroyInstance;
 
         private static int _id = 0;
         private int id;
@@ -18,6 +16,9 @@ namespace Game
         private Transform transform;
         private Renderer renderer;
         private Collider collider;
+
+        public delegate void OnDestroy(Entity me);
+
 
         public Transform Transform { get => transform; set => transform = value; }
         public Renderer Renderer { get => renderer; set => renderer = value; }
@@ -33,6 +34,9 @@ namespace Game
             Entity._id++;
 
         }
+
+        public event OnDestroy OnDestroyInstance;
+
         public void Render()
         {
             this.Renderer.Draw(this.Transform);
@@ -50,15 +54,10 @@ namespace Game
 
         public void CheckCollisions(List<Entity> entities) 
         {
+
             Entity[] temp = new Entity[entities.Count];
             entities.CopyTo(temp);
-            foreach (Entity e in temp)
-            {
-                if(collider.IsColliding(this, e))
-                {
-                    this.onCollision(e);
-                }
-            }
+            collider.CheckCollisions(temp, this);
         }
 
         public void Destroy()
