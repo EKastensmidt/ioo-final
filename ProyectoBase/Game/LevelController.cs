@@ -9,10 +9,11 @@ namespace Game
     public class LevelController
     {
         private static float elapsedTime = 0.0f;
-        private static float enemySpawnRate = 0.5f;
-        private static float coinSpawnRate = 6f;
+        private static float enemySpawnRate = 1f;
+        private static float enemySpawnRateMultiplier = 0.000001f;
+        private static float coinSpawnRate = 4f;
         private static float coinElapsedTime = 0.0f;
-        private static float fuelSpawnRate = 11f;
+        private static float fuelSpawnRate = 5f;
         private static float fuelElapsedTime = 0.0f;
         private Pool<Entity> enemies;
         private Pool<Entity> coins;
@@ -25,7 +26,6 @@ namespace Game
             Initialization();
             //PlayBackgroundAnimation();
             //currentAnimation = backgroundAnimation;
-
         }
 
         public void Initialization()
@@ -46,6 +46,8 @@ namespace Game
             Player.CheckCollisions(coins.Used);
             Player.CheckCollisions(fuels.Used);
 
+            UpdateDifficulty();
+
             CoinSpawner();
             FuelSpawner();
             EnemySpawner();
@@ -53,43 +55,46 @@ namespace Game
 
         public void Render()
         {
-            Engine.Draw("Textures/Background/STREET0");
+            Engine.Draw("Textures/Background/SPACE0");
             Player.Render();
             enemies.Render();
             coins.Render();
             fuels.Render();
         }
-
+        private Random random;
+        private Random GetRandom()
+        {
+            if (random == null)
+            {
+                random = new Random();
+            }
+            return random;
+        }
         private void EnemySpawner()
         {
-            Random _random = new Random();
-            float num = _random.Next(25, 775);
-            float x = num;
-            float y = -200;
             elapsedTime += Program.DeltaTime;
             if (elapsedTime > enemySpawnRate)
             {
+                float x = GetRandom().Next(25, 775);
+                float y = -200;
                 elapsedTime = 0;
                 Entity enemy = enemies.Get();
                 if(enemy == null)
                 {
-                    enemy = Factory.Spawn();
-                    Engine.Debug("New Car");
+                    enemy = EnemyFactory.Spawn(RandomEnumValue<EnemyFactory.Enemies>());
                     enemies.Add(enemy);
-                } 
+                }
                 enemy.Transform.Position = new Vector2(x, y);
             }
         }
 
         private void CoinSpawner()
         {
-            Random _random = new Random();
-            float num = _random.Next(25, 775);
-            float x = num;
-            float y = -200;
             coinElapsedTime += Program.DeltaTime;
             if (coinElapsedTime > coinSpawnRate)
             {
+                float x = GetRandom().Next(25, 775);
+                float y = -200;
                 coinElapsedTime = 0;
                 Entity coin = coins.Get();
                 if (coin == null)
@@ -102,22 +107,30 @@ namespace Game
         }
         private void FuelSpawner()
         {
-            Random _random = new Random();
-            float num = _random.Next(25, 775);
-            float x = num;
-            float y = -200;
             fuelElapsedTime += Program.DeltaTime;
             if (fuelElapsedTime > fuelSpawnRate)
             {
+                float x = GetRandom().Next(25, 775);
+                float y = -200;
                 fuelElapsedTime = 0;
                 Entity fuel = fuels.Get();
                 if (fuel == null)
                 {
-                    fuel = new Fuel(new Vector2(x, y), 100, 0, 1, 100);
+                    fuel = ConsumableFactory.Spawn(RandomEnumValue<ConsumableFactory.Consumables>());
                     fuels.Add(fuel);
                 }
                 fuel.Transform.Position = new Vector2(x, y);
             }
+        }
+        private void UpdateDifficulty()
+        {
+            enemySpawnRate = enemySpawnRate - enemySpawnRateMultiplier * Program.DeltaTime;
+        }
+        public T RandomEnumValue<T>()
+        {
+            var values = Enum.GetValues(typeof(T));
+            int random = GetRandom().Next(0, values.Length);
+            return (T)values.GetValue(random);
         }
     }
 }

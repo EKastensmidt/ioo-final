@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public class Fuel: Entity,IConsumable
+    public class FuelDown: Entity,IConsumable
     {
         public float Speed { get; set; }
         private float maxFuel = 100;
 
-        public Fuel(Vector2 position, float speed, float angle, float scale,float maxFuel) :
-            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(32, 32, "Textures/Fuel", "FUEL"), new Collider())
+        public FuelDown(Vector2 position, float speed, float angle, float scale, float maxFuel) :
+            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(34, 33, "Textures/Consumables/FuelDown", "FUELDOWN"), new Collider())
         {
             this.Speed = speed;
         }
@@ -36,8 +36,8 @@ namespace Game
         }
         public void Use()
         {
-            Player.Fuel = Player.Fuel + 25;
-            if(Player.Fuel> maxFuel)
+            Player.Fuel = Player.Fuel - 25;
+            if (Player.Fuel > maxFuel)
             {
                 Player.Fuel = maxFuel;
             }

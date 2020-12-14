@@ -10,11 +10,23 @@ namespace Game
         private static DateTime startTime;
         private static float lastFrameTime;
 
+        static List<int> list;
+
         public static float DeltaTime { get => deltaTime; }
 
         static void Main(string[] args)
         {
             Initialization();
+
+            //try
+            //{
+            //    Engine.Debug($"elements in list:{ list.Count}");
+            //}
+            //catch(Exception error)
+            //{
+            //    Engine.Debug($"error en lista:{error.Message}");
+            //}
+
             while (true)
             {
                 UpdateTime();

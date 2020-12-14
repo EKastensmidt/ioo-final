@@ -8,7 +8,7 @@ namespace Game
 {
     public class LoseScreen
     {
-        public const string backgroundTexture = "Textures/Background/STREET0";
+        public const string backgroundTexture = "Textures/Background/SPACE0";
         public const string escapeTexture = "Textures/Escape.png";
         public const string gameOverTexture = "Textures/Scenes/LoseScreen/gameOver.png";
 

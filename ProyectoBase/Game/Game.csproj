@@ -38,31 +38,36 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arrow.cs" />
+    <Compile Include="ConsumableFactory.cs" />
+    <Compile Include="Enemies\BigEnemy.cs" />
     <Compile Include="Button.cs" />
-    <Compile Include="Coin.cs" />
+    <Compile Include="Collectables\Coin.cs" />
     <Compile Include="Component\Animation.cs" />
     <Compile Include="Component\Collider.cs" />
     <Compile Include="Component\Entity.cs" />
     <Compile Include="Credits.cs" />
-    <Compile Include="Factory.cs" />
-    <Compile Include="Enemies\FastCar.cs" />
-    <Compile Include="Fuel.cs" />
+    <Compile Include="EnemyFactory.cs" />
+    <Compile Include="Enemies\FastEnemy.cs" />
+    <Compile Include="Consumables\Fuel.cs" />
+    <Compile Include="FuelDown.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="GameManager.cs" />
-    <Compile Include="Interfaces\IImplemetation.cs" />
     <Compile Include="Interfaces\ICollectable.cs" />
     <Compile Include="Interfaces\IConsumable.cs" />
     <Compile Include="Interfaces\IEnemy.cs" />
+    <Compile Include="Enemies\LaggyEnemy.cs" />
     <Compile Include="LevelController.cs" />
     <Compile Include="LoseScreen.cs" />
     <Compile Include="MainMenu.cs" />
-    <Compile Include="Enemies\NormalCar.cs" />
+    <Compile Include="Enemies\NormalEnemy.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pool.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Component\Renderer.cs" />
     <Compile Include="Component\Transform.cs" />
-    <Compile Include="Enemies\Truck.cs" />
+    <Compile Include="Enemies\SlowEnemy.cs" />
+    <Compile Include="SpeedDown.cs" />
+    <Compile Include="SpeedUp.cs" />
     <Compile Include="Vector2.cs" />
     <Compile Include="WinScreen.cs" />
   </ItemGroup>
@@ -70,6 +75,33 @@
     <Content Include="Engine.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Textures\Enemies\SlowEnemy\SLOW0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Enemies\FastEnemy\FAST0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Enemies\Normal\NORMAL0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Enemies\LaggyEnemy\LAGGY0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Enemies\BigEnemy\BIG0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Consumables\SpeedUp\SPEEDUP0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Consumables\SpeedDown\SPEEDDOWN0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Consumables\FuelDown\FUELDOWN0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Textures\Background\SPACE0">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <Content Include="Textures\Escape.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -94,13 +126,7 @@
     <Content Include="Textures\Scenes\WinScreen\youWin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Include="Textures\Background\STREET0">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Textures\Fuel\FUEL0">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Textures\Truck\TRUCK0">
+    <None Include="Textures\Consumables\Fuel\FUEL0">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Textures\Coin\COIN0">
@@ -113,12 +139,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Textures\Coin\COIN3">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Textures\FastCar\FAST0">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Textures\NormalCar\BASIC0">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Textures\Test\DOWN0">

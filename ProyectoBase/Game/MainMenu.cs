@@ -15,7 +15,7 @@ namespace Game
         private Button currentButton;
         private List<Button> buttons = new List<Button>();
 
-        public const string backgroundTexture = "Textures/Background/STREET0";
+        public const string backgroundTexture = "Textures/Background/SPACE0";
         //public const string titleTexture = "Textures/Title.png";
         public const string startButtonTexture = "Textures/Scenes/Menu/start.png";
         public const string creditsButtonTexture = "Textures/Scenes/Menu/credits.png";

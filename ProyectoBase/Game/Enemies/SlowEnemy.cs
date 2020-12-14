@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Game
 {
-    public class FastCar: Entity,IEnemy
+    public class SlowEnemy : Entity, IEnemy
     {
         public float Speed { get; set; }
 
-        public FastCar(Vector2 position, float speed, float angle, float scale) :
-            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(40, 100, "Textures/FastCar", "FAST"), new Collider())
+        public SlowEnemy(Vector2 position, float speed, float angle, float scale) :
+            base(new Transform(position, angle, new Vector2(scale, scale)), new Renderer(82, 84, "Textures/Enemies/SlowEnemy", "SLOW"), new Collider())
         {
             this.Speed = speed;
         }
